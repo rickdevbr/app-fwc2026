@@ -1,6 +1,7 @@
+import { Match } from '@/types/match';
 import Flag from './Flag';
 
-export default function MatchCard({ match }: { match: any }) {
+export default function MatchCard({ match }: Readonly<{ match: Match }>) {
     const matchDate = (
         new Date(match.utcDate).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })
         + ' às ' +

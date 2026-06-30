@@ -1,6 +1,8 @@
+import { StandingTableItem } from '@/types/standings';
+
 import Flag from '@/components/Flag';
 
-export default function GroupTable({ group, table }: { group: string, table: any[] }) {
+export default function GroupTable({ group, table }: Readonly<{ group: string, table: StandingTableItem[] }>) {
     return (
         <div>
             <h3 className="text-3xl font-bold text-black dark:text-white font-stretch-condensed">Grupo {group}</h3>
@@ -17,7 +19,7 @@ export default function GroupTable({ group, table }: { group: string, table: any
                     </tr>
                 </thead>
                 <tbody>
-                    {table.map((team: any) => (
+                    {table.map((team: StandingTableItem) => (
                         <tr key={team.team.id} className="border-t border-zinc-300 dark:border-white-700">
                             <td className="px-4 py-2">
                                 <Flag team={team.team} />

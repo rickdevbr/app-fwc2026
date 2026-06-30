@@ -3,9 +3,10 @@ import { getMatches } from '@/services/matches.service';
 import GroupTable from '@/components/GroupTable';
 import MatchCard from '@/components/MatchCard';
 import MatchCarousel from '@/components/MatchCarousel';
+import { StandingsResponse } from '@/types/standings';
 
 export default async function Home() {
-    const standings = await getStandings();
+    const standings: StandingsResponse = await getStandings();
     const matches = await getMatches();
 
     return (
@@ -26,7 +27,7 @@ export default async function Home() {
                                         <div className="mt-2">
                                             <h3 className="text-lg font-bold mb-2 text-center">Jogos</h3>
                                             {
-                                                matches.matches.filter(m => m.group === `GROUP_${standing.group}`).map((match: any) => (
+                                                matches.matches.filter(m => m.group === `GROUP_${standing.group}`).map((match) => (
                                                     <MatchCard key={match.id} match={match} />
                                                 ))
                                             }

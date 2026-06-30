@@ -1,5 +1,7 @@
 'use client'
 
+import { Match } from '@/types/match'
+
 import {
     Carousel,
     CarouselContent,
@@ -10,7 +12,7 @@ import {
 
 import MatchCard from '@/components/MatchCard';
 
-export default function MatchCarousel({ matches }: { matches: any[] }) {
+export default function MatchCarousel({ matches }: Readonly<{ matches: Match[] }>) {
     return (
         <Carousel className="w-full">
             <div className="glass-card flex items-center justify-center sticky z-1000 top-0 shadow-3xl mt-8 mb-4">
@@ -39,7 +41,7 @@ export default function MatchCarousel({ matches }: { matches: any[] }) {
                                 <div key={stage} className="glass-card">
                                     <h3 className="text-2xl font-bold mt-4 mb-2 text-center">{label}</h3>
                                     {
-                                        stageMatches.map((match: any) => (
+                                        stageMatches.map((match) => (
                                             <MatchCard key={match.id} match={match} />
                                         ))
                                     }
