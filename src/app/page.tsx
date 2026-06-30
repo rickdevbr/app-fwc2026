@@ -11,12 +11,12 @@ export default async function Home() {
 
     return (
         <div className="flex flex-col flex-1 items-center justify-centerfont-sans">
-            <main className="flex flex-1 w-full flex-col items-center justify-between p-8">
-                <h1 className="queer-title text-6xl m-auto font-bold text-black dark:text-white font-stretch-expanded w-100 text-center">
+            <main className="flex flex-1 w-full flex-col items-center justify-between p-4 sm:p-8">
+                <h1 className="queer-title text-4xl sm:text-6xl m-auto font-bold text-black dark:text-white font-stretch-expanded text-center">
                     Copa do Mundo 2026
                 </h1>
                 <div className="mt-6 w-full">
-                    <h2 className="glass-card text-4xl font-bold text-black dark:text-white font-stretch-normal text-center mb-4">Fase de Grupos</h2>
+                    <h2 className="glass-card text-2xl sm:text-4xl font-bold text-black dark:text-white font-stretch-normal text-center mb-4">Fase de Grupos</h2>
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                         {
                             standings.standings.map((standing) => (
