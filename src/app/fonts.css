@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'FWC2026';
+  src: url('/fonts/FWC2026/FWC2026-UltraCondensedMedium.4da29b9d.woff2') format('woff2');
+  font-weight: 500;
+  font-stretch: ultra-condensed;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FWC2026';
+  src: url('/fonts/FWC2026/FWC2026-CondensedLight.c11e508e.woff2') format('woff2');
+  font-weight: 300;
+  font-stretch: condensed;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FWC2026';
+  src: url('/fonts/FWC2026/FWC2026-NormalBlack.2bd896c8.woff2') format('woff2');
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FWC2026';
+  src: url('/fonts/FWC2026/FWC2026-UltraCondensedBlack.8e6ba053.woff2') format('woff2');
+  font-weight: 900;
+  font-stretch: ultra-condensed;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FWC2026';
+  src: url('/fonts/FWC2026/FWC2026-UltraCondensedBold.0e7149b5.woff2') format('woff2');
+  font-weight: 700;
+  font-stretch: ultra-condensed;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FWC2026';
+  src: url('/fonts/FWC2026/FWC2026-ExpandedBlack.e49451e9.woff2') format('woff2');
+  font-weight: 900;
+  font-stretch: expanded;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FWC2026';
+  src: url('/fonts/FWC2026/FWC2026-SemiExpandedBlack.e378fa1c.woff2') format('woff2');
+  font-weight: 900;
+  font-stretch: semi-expanded;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FWC2026';
+  src: url('/fonts/FWC2026/FWC2026-NormalRegular.77c3c249.woff2') format('woff2');
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  font-display: swap;
+}

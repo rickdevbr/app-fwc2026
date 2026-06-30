@@ -1,65 +1,45 @@
-import Image from "next/image";
+import { getStandings } from '@/services/standings.service';
+import { getMatches } from '@/services/matches.service';
+import GroupTable from '@/components/GroupTable';
+import MatchCard from '@/components/MatchCard';
+import MatchCarousel from '@/components/MatchCarousel';
 
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+export default async function Home() {
+    const standings = await getStandings();
+    const matches = await getMatches();
+
+    return (
+        <div className="flex flex-col flex-1 items-center justify-centerfont-sans">
+            <main className="flex flex-1 w-full flex-col items-center justify-between p-8">
+                <h1 className="queer-title text-6xl m-auto font-bold text-black dark:text-white font-stretch-expanded w-100 text-center">
+                    Copa do Mundo 2026
+                </h1>
+                <div className="mt-6 w-full">
+                    <h2 className="glass-card text-4xl font-bold text-black dark:text-white font-stretch-normal text-center mb-4">Fase de Grupos</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                        {
+                            standings.standings.map((standing) => (
+                                <div key={standing.group} className="glass-card">
+                                    <GroupTable group={standing.group} table={standing.table} />
+                                    <details className="mt-2">
+                                        <summary className="cursor-pointer text-center text-sm font-bold text-black dark:text-white font-stretch-condensed">Ver Jogos</summary>
+                                        <div className="mt-2">
+                                            <h3 className="text-lg font-bold mb-2 text-center">Jogos</h3>
+                                            {
+                                                matches.matches.filter(m => m.group === `GROUP_${standing.group}`).map((match: any) => (
+                                                    <MatchCard key={match.id} match={match} />
+                                                ))
+                                            }
+                                        </div>
+                                    </details>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <MatchCarousel matches={matches.matches} />
+                </div>
+            </main>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    );
 }
